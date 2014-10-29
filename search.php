@@ -40,7 +40,7 @@
     }
     // Retrieve data
     $name = $_POST['name'];
-    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%" . mysql_real_escape_string($name) . "%'";
+    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%" . addslashes($name) . "%'";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
