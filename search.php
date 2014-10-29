@@ -40,10 +40,8 @@
     }
     // Retrieve data
     $name = $_POST['name'];
-    $sql_select = "SELECT * FROM registration_tbl WHERE name = '?'";
-    $stmt = $conn->prepare($sql_select);
-    $stmt->bindValue(1, $name);
-    $stmt->execute();
+    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%" . $name . "%'";
+    $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
         echo "<h2>Results:</h2>";
@@ -60,7 +58,7 @@
         }
         echo "</table>";
     } else {
-        echo "<h3>No one is currently registered.</h3>";
+        echo "<h3>No results.</h3>";
     }
 ?>
 </body>
