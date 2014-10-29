@@ -40,7 +40,7 @@
     }
     // Retrieve data
     $name = $_POST['name'];
-    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%?%'";
+    $sql_select = "SELECT * FROM registration_tbl WHERE name = '?'";
     $stmt = $conn->prepare($sql_select);
     $stmt->bindValue(1, $name);
     $stmt->execute();
