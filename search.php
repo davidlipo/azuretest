@@ -39,7 +39,7 @@
         die(var_dump($e));
     }
     // Retrieve data
-    $name = $_POST['name'];
+    $name = $_POST ? $_POST['name'] : '';
     $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%" . addslashes($name) . "%'";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll(); 
